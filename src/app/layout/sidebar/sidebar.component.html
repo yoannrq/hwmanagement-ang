@@ -1,0 +1,16 @@
+<aside class="sidebar">
+  <div class="logo-container">
+    <img src="public/hwm-logo.png" alt="HWM Logo" class="logo" />
+  </div>
+
+  <nav class="navigation">
+    <ul class="nav-list">
+      <li *ngFor="let item of menuItems" class="nav-item">
+        <a [routerLink]="item.path" routerLinkActive="active" class="nav-link">
+          <i class="material-icons">{{ item.icon }}</i>
+          <span class="item-label">{{ item.label }}</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</aside>
