@@ -4,11 +4,12 @@ import { Observable, map, catchError, of } from 'rxjs';
 
 import { UserService } from '../../core/services/user.service';
 import { User } from '../../core/models/user.model';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })

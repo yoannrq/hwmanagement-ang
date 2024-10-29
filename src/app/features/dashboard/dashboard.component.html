@@ -1,21 +1,15 @@
 <div class="dashboard-container">
   <section class="stats-flex">
-    <div class="stat-card">
+    <a routerLink="/users" class="stat-card">
       <h3>Utilisateurs</h3>
       <p class="stat-number">{{ userCount$ | async }}</p>
       <i class="material-icons">group</i>
-    </div>
+    </a>
 
-    <div class="stat-card">
+    <a routerLink="/teams" class="stat-card">
       <h3>Équipes</h3>
       <p class="stat-number">12</p>
       <i class="material-icons">groups</i>
-    </div>
-
-    <div class="stat-card">
-      <h3>Événements</h3>
-      <p class="stat-number">28</p>
-      <i class="material-icons">event</i>
-    </div>
+    </a>
   </section>
 </div>

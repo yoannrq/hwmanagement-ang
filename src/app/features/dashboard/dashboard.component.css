@@ -20,6 +20,7 @@
   transition: transform 0.2s;
   flex: 1;
   min-width: 250px;
+  text-decoration: none;
 }
 
 .stat-number {
