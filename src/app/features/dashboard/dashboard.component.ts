@@ -15,9 +15,11 @@ import { RouterModule } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   userCount$: Observable<number>;
+  teamCount$: Observable<number>;
 
   constructor(private userService: UserService) {
     this.userCount$ = new Observable();
+    this.teamCount$ = new Observable();
   }
 
   ngOnInit(): void {
@@ -29,5 +31,7 @@ export class DashboardComponent implements OnInit {
         return of(0);
       })
     );
+
+    //TODO Init teamCount$ with the number of teams
   }
 }
