@@ -4,6 +4,7 @@ import { Observable, map, catchError, of } from 'rxjs';
 
 import { UserService } from '../../core/services/user.service';
 import { TeamService } from '../../core/services/team.service';
+import { ToastService } from '../../core/services/toast.service';
 import { User } from '../../core/models/user.model';
 import { Team } from '../../core/models/team.model';
 import { RouterModule } from '@angular/router';
@@ -21,7 +22,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private teamService: TeamService
+    private teamService: TeamService,
+    private toastService: ToastService
   ) {
     this.userCount$ = new Observable();
     this.teamCount$ = new Observable();
@@ -32,7 +34,10 @@ export class DashboardComponent implements OnInit {
     this.userCount$ = this.userService.getUsers().pipe(
       map((users: User[]) => users.length),
       catchError((error) => {
-        console.error('Erreur lors du chargement des utilisateurs:', error);
+        this.toastService.showToast(
+          'Erreur lors du chargement des utilisateurs',
+          'error'
+        );
         return of(0);
       })
     );
@@ -41,7 +46,10 @@ export class DashboardComponent implements OnInit {
     this.teamCount$ = this.teamService.getTeams().pipe(
       map((teams: Team[]) => teams.length),
       catchError((error) => {
-        console.error('Erreur lors du chargement des équipes:', error);
+        this.toastService.showToast(
+          'Erreur lors du chargement des équipes',
+          'error'
+        );
         return of(0);
       })
     );
