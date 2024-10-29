@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { Observable, map, catchError, of } from 'rxjs';
 
 import { UserService } from '../../core/services/user.service';
+import { TeamService } from '../../core/services/team.service';
 import { User } from '../../core/models/user.model';
+import { Team } from '../../core/models/team.model';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -17,7 +19,10 @@ export class DashboardComponent implements OnInit {
   userCount$: Observable<number>;
   teamCount$: Observable<number>;
 
-  constructor(private userService: UserService) {
+  constructor(
+    private userService: UserService,
+    private teamService: TeamService
+  ) {
     this.userCount$ = new Observable();
     this.teamCount$ = new Observable();
   }
@@ -32,6 +37,13 @@ export class DashboardComponent implements OnInit {
       })
     );
 
-    //TODO Init teamCount$ with the number of teams
+    // Init teamCount$ with the number of teams
+    this.teamCount$ = this.teamService.getTeams().pipe(
+      map((teams: Team[]) => teams.length),
+      catchError((error) => {
+        console.error('Erreur lors du chargement des équipes:', error);
+        return of(0);
+      })
+    );
   }
 }
