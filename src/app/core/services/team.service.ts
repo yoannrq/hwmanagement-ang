@@ -1,21 +1,19 @@
-// -- PACKAGE IMPORTS --
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-// -- LOCAL IMPORTS --
 import { environment } from '../../../environments/environment';
-import { User } from '../models/user.model';
+import { Team } from '../models/team.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
-  private baseUrl = `${environment.apiUrl}/user`;
+export class TeamService {
+  private baseUrl = `${environment.apiUrl}/team`;
 
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseUrl);
+  getTeams(): Observable<Team[]> {
+    return this.http.get<Team[]>(this.baseUrl);
   }
 }

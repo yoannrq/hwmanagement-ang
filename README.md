@@ -1,27 +1,50 @@
-# HwmanagementAng
+# 🚗 Highway Manager - Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.9.
+## 🎯 Présentation
 
-## Development server
+Highway Manager Frontend est l'interface utilisateur de notre solution de gestion autoroutière. Développée en Angular, elle offre une expérience utilisateur fluide et réactive pour la gestion quotidienne des opérations autoroutières.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+**Note : Ce projet est actuellement en développement actif. Les fonctionnalités peuvent être incomplètes ou sujettes à des modifications.**
 
-## Code scaffolding
+## 🚀 Fonctionnalités principales
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Tableau de bord interactif : Vue d'ensemble des activités et événements en cours
+- Gestion des équipes : Interface de gestion du personnel et des équipes
+- Planification d'événements : Système de planification
+- Rapports et suivis : Création et consultation de rapports d'événements
 
-## Build
+## 🛠️ Stack technique
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+| Technologie | Raison du choix                                                                      |
+| ----------- | ------------------------------------------------------------------------------------ |
+| Angular     | Framework mature, architecture robuste, excellent pour les applications d'entreprise |
+| TypeScript  | Typage statique, meilleure maintenabilité, détection précoce des erreurs             |
 
-## Running unit tests
+## 📥 Installation
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+# Cloner le dépôt
+git clone https://github.com/yoannrq/hwmanagement-ang
 
-## Running end-to-end tests
+# Installer les dépendances
+npm install
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# Lancer le serveur de développement
+ng serve
+```
 
-## Further help
+## 🤝 Contribution
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Ce projet est actuellement en développement. Les contributions, suggestions d'amélioration et retours sont les bienvenus !
+
+## 📬 Contact
+
+Pour toute question concernant ce projet, n'hésitez pas à me contacter via les liens suivants :
+
+[![LinkedIn](https://raw.githubusercontent.com/CLorant/readme-social-icons/main/large/filled/linkedin.svg)](https://www.linkedin.com/in/yoannrouquie)
+[![Twitter](https://raw.githubusercontent.com/CLorant/readme-social-icons/main/large/filled/twitter-x.svg)](https://x.com/YoannRq)
+[![GitHub](https://raw.githubusercontent.com/CLorant/readme-social-icons/main/large/filled/github.svg)](https://github.com/yoannrq)
+
+---
+
+Merci de votre intérêt pour le projet ! Ce projet est en constante évolution, n'hésitez pas à revenir régulièrement pour suivre son avancement.
