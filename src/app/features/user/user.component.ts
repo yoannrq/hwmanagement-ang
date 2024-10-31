@@ -1,19 +1,24 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Observable, combineLatest } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
-import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { User } from '../../core/models/user.model';
 import { Role } from '../../core/models/role.model';
 import { UserService } from '../../core/services/user.service';
 import { RoleService } from '../../core/services/role.service';
+import { UserFormModalComponent } from '../../shared/user-form-modal/user-form-modal.component';
+import { ToastService } from '../../core/services/toast.service';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [CommonModule, RouterModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ReactiveFormsModule,
+    UserFormModalComponent,
+  ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
 })
@@ -21,25 +26,54 @@ export class UserComponent implements OnInit {
   users: User[] = [];
   roles: Role[] = [];
   filteredUsers: User[] = [];
-
+  showModal = false;
+  selectedUser: User | null = null;
   searchValue: string = '';
   selectedRole: string = '';
 
   constructor(
     private userService: UserService,
-    private roleService: RoleService
+    private roleService: RoleService,
+    private toastService: ToastService
   ) {}
 
   ngOnInit() {
-    // Load users with filters applied
+    this.loadUsers();
+    this.loadRoles();
+  }
+
+  loadUsers() {
     this.userService.getUsers().subscribe((users) => {
       this.users = users;
       this.applyFilters();
     });
+  }
 
-    // Load roles
+  loadRoles() {
     this.roleService.getRoles().subscribe((roles) => {
       this.roles = roles;
+    });
+  }
+
+  // Modal méthods
+  onEditUser(user: User) {
+    this.selectedUser = user;
+    this.showModal = true;
+  }
+
+  onCloseModal() {
+    this.showModal = false;
+  }
+
+  onSaveUser(userData: any) {
+    this.userService.updateUser(userData).subscribe({
+      next: () => {
+        this.loadUsers();
+        this.showModal = false;
+      },
+      error: (error: any) => {
+        this.toastService.showToast(error.error.message, 'error');
+      },
     });
   }
 

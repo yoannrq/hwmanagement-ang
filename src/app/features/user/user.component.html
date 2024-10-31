@@ -1,7 +1,6 @@
 <div class="user-management-container">
   <div class="header">
     <h1>Gestion des Utilisateurs</h1>
-    <button class="add-user-btn">+ Ajouter un utilisateur</button>
   </div>
 
   <div class="filters">
@@ -34,15 +33,22 @@
         <td>{{ user.email }}</td>
         <td>{{ user.roleName }}</td>
         <td *ngIf="user.roleName !== 'Admin'" class="actions">
-          <button class="edit-btn"><i class="material-icons">edit</i></button>
+          <button class="edit-btn" (click)="onEditUser(user)">
+            <i class="material-icons">edit</i>
+          </button>
           <button class="delete-btn">
             <i class="material-icons">delete</i>
           </button>
         </td>
-        <td *ngIf="user.roleName === 'Admin'" class="actions">
-          <button class="edit-btn"><i class="material-icons">edit</i></button>
-        </td>
+        <td *ngIf="user.roleName === 'Admin'" class="actions">/</td>
       </tr>
     </tbody>
   </table>
+  @if (showModal && selectedUser) {
+  <app-user-form-modal
+    [user]="selectedUser"
+    (close)="onCloseModal()"
+    (save)="onSaveUser($event)"
+  />
+  }
 </div>

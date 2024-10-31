@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 // -- LOCAL IMPORTS --
 import { environment } from '../../../environments/environment';
-import { User } from '../models/user.model';
+import { User, UserCreation } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,5 +17,13 @@ export class UserService {
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl);
+  }
+
+  updateUser(user: UserCreation): Observable<User> {
+    return this.http.patch<User>(`${this.baseUrl}/${user.id}`, user);
+  }
+
+  createUser(user: UserCreation): Observable<User> {
+    return this.http.post<User>(this.baseUrl, user);
   }
 }
