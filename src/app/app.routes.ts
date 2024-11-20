@@ -24,4 +24,13 @@ export const routes: Routes = [
         (component) => component.UserComponent
       ),
   },
+  /* --TEAM-- */
+  {
+    path: 'teams',
+    // lazy loading
+    loadComponent: () =>
+      import('./features/team/team.component').then(
+        (component) => component.TeamComponent
+      ),
+  },
 ];
